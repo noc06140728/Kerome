@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:summary="Summary of Kerome Preferences" android:title="Kerome Preferences">
+        <EditTextPreference android:title="Mail Address" android:summary="Send to mail address..." android:key="to_addr"></EditTextPreference>
+    </PreferenceCategory>
+</PreferenceScreen>
