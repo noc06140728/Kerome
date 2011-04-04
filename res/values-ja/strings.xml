@@ -2,4 +2,9 @@
 <resources>
     <string name="preference">設定</string>
     <string name="help">ヘルプ</string>
+    <string name="send">送信</string>
+    <string name="expected_time">帰宅予定時刻</string>
+    <string name="current_time">現在時刻</string>
+    <string name="recipient">受取人</string>
+    <string name="recipient_summary">受取人のメールアドレス</string>
 </resources>
