@@ -2,7 +2,6 @@ package net.hardwave.kerome;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Formatter;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
@@ -10,12 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
