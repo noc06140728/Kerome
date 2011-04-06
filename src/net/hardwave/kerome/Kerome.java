@@ -1,26 +1,75 @@
 package net.hardwave.kerome;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Formatter;
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 
 public class Kerome extends Activity {
+	private TextView recipientText;
+	private SharedPreferences myPrefs;
 	/** Called when the activity is first created. */
+	private SeekBar expectedTimeBar;
+	private TextView expectedTimeText;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+		recipientText = (TextView) this.findViewById(R.id.recipient_text);
+		expectedTimeBar = (SeekBar) this.findViewById(R.id.expected_time_bar);
+		expectedTimeText = (TextView) this.findViewById(R.id.expected_time_text);
+		
+		expectedTimeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener () {
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				setExpectedTime(progress);
+			}
+
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO 自動生成されたメソッド・スタブ
+			}
+
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO 自動生成されたメソッド・スタブ
+			}
+			
+		});
+	}
+	
+	private void setExpectedTime(int progress) {
+		Calendar now = new GregorianCalendar();
+		now.add(Calendar.MINUTE, progress);
+		now.add(Calendar.MINUTE, -now.get(Calendar.MINUTE) % 10);
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+		expectedTimeText.setText(format.format(now.getTime()));
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		recipientText.setText(myPrefs.getString("recipient", ""));
+		setExpectedTime(expectedTimeBar.getProgress());
 	}
 
 	public void sendMail(View v) {
-		SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-		String toAddr = myPrefs.getString("to_addr", "");
+		String toAddr = myPrefs.getString("recipient", "");
 		
 		final Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("plain/text");
