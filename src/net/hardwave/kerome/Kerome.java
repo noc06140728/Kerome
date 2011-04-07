@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -22,8 +24,8 @@ public class Kerome extends Activity {
 	private TextView recipientText;
 	private SharedPreferences myPrefs;
 	/** Called when the activity is first created. */
-	private SeekBar expectedTimeBar;
-	private TextView expectedTimeText;
+	private SeekBar quittingTimeBar;
+	private TextView quittingTimeText;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,46 +33,46 @@ public class Kerome extends Activity {
 		
 		myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		recipientText = (TextView) this.findViewById(R.id.recipient_text);
-		expectedTimeBar = (SeekBar) this.findViewById(R.id.expected_time_bar);
-		expectedTimeText = (TextView) this.findViewById(R.id.expected_time_text);
+		quittingTimeBar = (SeekBar) this.findViewById(R.id.quitting_time_bar);
+		quittingTimeText = (TextView) this.findViewById(R.id.quitting_time_text);
 		
-		expectedTimeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener () {
+		quittingTimeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener () {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
-				setExpectedTime(progress);
+				setQuittingTime(progress);
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+				// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½Eï¿½Xï¿½^ï¿½u
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+				// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½Eï¿½Xï¿½^ï¿½u
 			}
 			
 		});
 	}
 	
-	private void setExpectedTime(int progress) {
+	private void setQuittingTime(int progress) {
 		Calendar now = new GregorianCalendar();
 		now.add(Calendar.MINUTE, progress);
 		now.add(Calendar.MINUTE, -now.get(Calendar.MINUTE) % 10);
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-		expectedTimeText.setText(format.format(now.getTime()));
+		quittingTimeText.setText(format.format(now.getTime()));
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		recipientText.setText(myPrefs.getString(getString(R.string.prefs_recipient), ""));
-		setExpectedTime(expectedTimeBar.getProgress());
+		recipientText.setText(myPrefs. getString(getString(R.string.prefs_recipient), ""));
+		setQuittingTime(quittingTimeBar.getProgress());
 	}
 
 	public void sendMail(View v) {
 		String toAddr = myPrefs.getString(getString(R.string.prefs_recipient), "");
 		
 		final Intent intent;
-		if (getString(R.string.prefs_intent_action_send).equals(myPrefs.getString(getString(R.string.prefs_intent_action), ""))) {
+		if ("action_send".equals(myPrefs.getString(getString(R.string.prefs_intent_action), ""))) {
 			intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("plain/text");
 			intent.putExtra(Intent.EXTRA_EMAIL, new String[] {toAddr});
@@ -79,11 +81,12 @@ public class Kerome extends Activity {
 			intent.setData(Uri.parse("mailto:" + toAddr));
 		}
 		
-		intent.putExtra(Intent.EXTRA_SUBJECT, "‹A‚è‚Ü‚·");
-		intent.putExtra(Intent.EXTRA_TEXT, "‚±‚ê‚©‚ç‹A‚è‚Ü‚·B");
+		intent.putExtra(Intent.EXTRA_SUBJECT, "ï¿½Aï¿½ï¿½Ü‚ï¿½");
+		intent.putExtra(Intent.EXTRA_TEXT, "ï¿½ï¿½ï¿½ê‚©ï¿½ï¿½Aï¿½ï¿½Ü‚ï¿½ï¿½B");
 		startActivity(Intent.createChooser(intent, "Send mail..."));
 	}
 
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.mainmenu, menu);
@@ -110,21 +113,21 @@ public class Kerome extends Activity {
 	}
 
 	private void help() {
-		// Builder dialog = new AlertDialog.Builder(null);
-		// dialog.setTitle("Help Dialog");
-		// dialog.create();
-		// .setIcon(R.drawable.alert_dialog_icon)
-		// .setTitle("Help Dialog")
-		// .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-		// public void onClick(DialogInterface dialog, int whichButton) {
-		// //code for OK
-		// }
-		// })
-		// .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-		// public void onClick(DialogInterface dialog, int whichButton) {
-		// //code for Cancel
-		// }
-		// })
-		// .create();
+//		 Builder dialog = new AlertDialog.Builder(null);
+//		 dialog.setTitle("Help Dialog");
+//		 dialog.create();
+//		 .setIcon(R.drawable.alert_dialog_icon)
+//		 .setTitle("Help Dialog")
+//		 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//		 public void onClick(DialogInterface dialog, int whichButton) {
+//		 //code for OK
+//		 }
+//		 })
+//		 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//		 public void onClick(DialogInterface dialog, int whichButton) {
+//		 //code for Cancel
+//		 }
+//		 })
+//		 .create();
 	}
 }

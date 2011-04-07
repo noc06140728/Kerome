@@ -4,7 +4,7 @@
     <string name="help">ヘルプ</string>
     <string name="send">送信</string>
     <string name="quitting_time">退社予定時刻</string>
-    <string name="current_time">現在時刻</string>
-    <string name="recipient">受取人</string>
-    <string name="recipient_summary">受取人のメールアドレス</string>
+    <string name="recipient">宛先</string>
+    <string name="recipient_summary">宛先のメールアドレス</string>
+    <string name="intent_action_summary">Intent Action を切り替えると、送信に利用できるメールアプリケーションを変更できる場合があります。</string>
 </resources>

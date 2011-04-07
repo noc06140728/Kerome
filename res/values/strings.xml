@@ -7,10 +7,9 @@
     <string name="help">Help</string>
     <string name="send">Send</string>
     <string name="quitting_time">Quitting Time</string>
-    <string name="current_time">Current Time</string>
     <string name="recipient">Recipient</string>
     <string name="recipient_summary">Recipient mail address</string>
     <string name="intent_action">Intent Action</string>
-    <string name="prefs_intent_action_send">ACTION_SEND</string>
-    <string name="prefs_intent_action_sendto">ACTION_SENDTO</string>
+    <string name="intent_action_send">ACTION_SEND</string>
+    <string name="intent_action_sendto">ACTION_SENDTO(sp-mode)</string>
 </resources>
