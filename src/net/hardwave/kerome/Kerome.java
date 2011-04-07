@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -61,16 +62,23 @@ public class Kerome extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		recipientText.setText(myPrefs.getString("recipient", ""));
+		recipientText.setText(myPrefs.getString(getString(R.string.prefs_recipient), ""));
 		setExpectedTime(expectedTimeBar.getProgress());
 	}
 
 	public void sendMail(View v) {
-		String toAddr = myPrefs.getString("recipient", "");
+		String toAddr = myPrefs.getString(getString(R.string.prefs_recipient), "");
 		
-		final Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("plain/text");
-		intent.putExtra(Intent.EXTRA_EMAIL, new String[] {toAddr});
+		final Intent intent;
+		if (getString(R.string.prefs_intent_action_send).equals(myPrefs.getString(getString(R.string.prefs_intent_action), ""))) {
+			intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("plain/text");
+			intent.putExtra(Intent.EXTRA_EMAIL, new String[] {toAddr});
+		} else {
+			intent = new Intent(Intent.ACTION_SENDTO);
+			intent.setData(Uri.parse("mailto:" + toAddr));
+		}
+		
 		intent.putExtra(Intent.EXTRA_SUBJECT, "ãAÇËÇ‹Ç∑");
 		intent.putExtra(Intent.EXTRA_TEXT, "Ç±ÇÍÇ©ÇÁãAÇËÇ‹Ç∑ÅB");
 		startActivity(Intent.createChooser(intent, "Send mail..."));

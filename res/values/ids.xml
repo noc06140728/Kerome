@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="prefs_recipient">prefs_recipient</string>
+<string name="prefs_intent_action">prefs_intent_action</string>
+</resources>
