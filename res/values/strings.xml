@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kerome</string>
+    
 
     <string name="preference">Preference</string>
 
@@ -9,7 +9,8 @@
     <string name="quitting_time">Quitting Time</string>
     <string name="recipient">Recipient</string>
     <string name="recipient_summary">Recipient mail address</string>
-    <string name="intent_action">Intent Action</string>
+    <string name="intent_action_summary">Switching Intent Action, the changes may be available to send e-mail application.</string><string name="intent_action">Intent Action</string>
     <string name="intent_action_send">ACTION_SEND</string>
     <string name="intent_action_sendto">ACTION_SENDTO(sp-mode)</string>
+    <string name="app_name">Kerome</string>
 </resources>
