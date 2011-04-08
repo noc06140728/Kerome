@@ -43,11 +43,11 @@ public class Kerome extends Activity {
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO �����������ꂽ���\�b�h�E�X�^�u
+				// TODO 
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO �����������ꂽ���\�b�h�E�X�^�u
+				// TODO 
 			}
 			
 		});
@@ -64,7 +64,7 @@ public class Kerome extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		recipientText.setText(myPrefs. getString(getString(R.string.prefs_recipient), ""));
+		recipientText.setText(myPrefs.getString(getString(R.string.prefs_recipient), ""));
 		setQuittingTime(quittingTimeBar.getProgress());
 	}
 
@@ -81,8 +81,8 @@ public class Kerome extends Activity {
 			intent.setData(Uri.parse("mailto:" + toAddr));
 		}
 		
-		intent.putExtra(Intent.EXTRA_SUBJECT, "�A��܂�");
-		intent.putExtra(Intent.EXTRA_TEXT, "���ꂩ��A��܂��B");
+		intent.putExtra(Intent.EXTRA_SUBJECT, "GOING HOME");
+		intent.putExtra(Intent.EXTRA_TEXT, "I'm going home soon.");
 		startActivity(Intent.createChooser(intent, "Send mail..."));
 	}
 
