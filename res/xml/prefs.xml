@@ -2,6 +2,5 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference android:title="@string/recipient" android:summary="@string/recipient_summary" android:key="@string/prefs_recipient"></EditTextPreference>
-    <ListPreference android:title="@string/intent_action" android:entries="@array/intent_action_entries" android:entryValues="@array/intent_action_entry_values" android:defaultValue="action_send" android:key="@string/prefs_intent_action" android:summary="@string/intent_action_summary"></ListPreference>
-    <EditTextPreference android:key="@string/prefs_"></EditTextPreference>
+    <ListPreference android:defaultValue="action_send" android:key="@string/prefs_intent_action" android:title="@string/intent_action" android:entries="@array/intent_action_entries" android:summary="@string/intent_action_summary" android:entryValues="@array/intent_action_entry_values"></ListPreference>
 </PreferenceScreen>
