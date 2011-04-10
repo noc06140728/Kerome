@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="body_sorry">
+        <item>ごめん。</item>
+        <item>ゴメン。</item>
+        <item>ごめんなさい。</item>
+        <item>ごめんよ。</item>
+        <item>ごめんよー。</item>
+        <item>ごめんよぉ。</item>
+    </string-array>
+    <string-array name="body_go_home">
+        <item>これから帰ります。</item>
+        <item>これから出ます。</item>
+        <item>もうすぐ出ます。</item>
+    </string-array>
+    <string-array name="body_go_home_later">
+        <item>やっと、帰れます。</item>
+        <item>遅くなりました。</item>
+        <item>急いで帰ります。</item>
+    </string-array>
+    <string-array name="body_on_job1">
+        <item>まだ仕事が片付きません。</item>
+        <item>トラブル対応してます。</item>
+        <item>まだかかりそう。</item>
+    </string-array>    
+    <string-array name="body_on_job2">
+        <item>HH時頃までには、</item>
+        <item>HH時半までには、</item>
+        <item>HHMMまでには、</item>
+        <item>あとMM分くらいで、</item>
+    </string-array>    
+    <string-array name="body_on_job3">	
+        <item>出れそう</item>
+        <item>片付きそう</item>
+        <item>終わりそう</item>
+    </string-array>    
+    <string-array name="body_on_job4">	
+        <item>。</item>
+        <item>かな。</item>
+        <item>です。</item>
+    </string-array>    
+    <string-array name="body_on_job5">	
+        <item>早く片付けれるように</item>
+        <item>早く帰れるように</item>
+    </string-array>    
+    <string-array name="body_on_job6">	
+        <item>、頑張ります。</item>
+        <item>、がんばります。</item>
+        <item>します。</item>
+    </string-array>    
+</resources>

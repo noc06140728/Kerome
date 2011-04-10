@@ -26,6 +26,10 @@ public class Kerome extends Activity {
 	/** Called when the activity is first created. */
 	private SeekBar quittingTimeBar;
 	private TextView quittingTimeText;
+	private TextView mailBodyText;
+	
+	private MailGenerator gen;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,11 +39,17 @@ public class Kerome extends Activity {
 		recipientText = (TextView) this.findViewById(R.id.recipient_text);
 		quittingTimeBar = (SeekBar) this.findViewById(R.id.quitting_time_bar);
 		quittingTimeText = (TextView) this.findViewById(R.id.quitting_time_text);
+		mailBodyText = (TextView) this.findViewById(R.id.mail_body_text);
+		
+		gen = new MailGenerator(getResources());
 		
 		quittingTimeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener () {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				setQuittingTime(progress);
+				
+				gen.setTime(progress);
+				mailBodyText.setText(gen.generateBody());
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
@@ -82,7 +92,7 @@ public class Kerome extends Activity {
 		}
 		
 		intent.putExtra(Intent.EXTRA_SUBJECT, "GOING HOME");
-		intent.putExtra(Intent.EXTRA_TEXT, "I'm going home soon.");
+		intent.putExtra(Intent.EXTRA_TEXT, mailBodyText.getText());
 		startActivity(Intent.createChooser(intent, "Send mail..."));
 	}
 

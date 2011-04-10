@@ -11,4 +11,5 @@
     <SeekBar android:layout_gravity="center_vertical" android:layout_margin="5dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/quitting_time_bar" android:max="360"></SeekBar>
 </LinearLayout>
 <Button android:text="@string/send" android:layout_width="match_parent" android:layout_height="wrap_content" android:onClick="sendMail" android:id="@+id/send_button"></Button>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/mail_body_text" android:text="(mail_body)"></TextView>
 </LinearLayout>
