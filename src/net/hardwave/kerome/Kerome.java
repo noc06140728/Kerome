@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -76,6 +74,7 @@ public class Kerome extends Activity {
 		super.onResume();
 		recipientText.setText(myPrefs.getString(getString(R.string.prefs_recipient), ""));
 		setQuittingTime(quittingTimeBar.getProgress());
+		gen.setUsualQuittingTime(Integer.parseInt(myPrefs.getString(getString(R.string.prefs_usual_quitting_time), "19")));
 	}
 
 	public void sendMail(View v) {

@@ -3,6 +3,7 @@ package net.hardwave.kerome;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -11,6 +12,8 @@ import android.preference.PreferenceActivity;
 public class KeromePrefs extends PreferenceActivity {
 
 	private EditTextPreference recipientEditText;
+	private ListPreference usualQuittingTimeList;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,10 +27,12 @@ public class KeromePrefs extends PreferenceActivity {
 		
 		recipientEditText.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				((EditTextPreference)preference).setSummary((String)newValue.toString());
+				preference.setSummary((String)newValue);
 				return true;
 			}
 		});
+		
+		usualQuittingTimeList = (ListPreference) findPreference(getString(R.string.prefs_usual_quitting_time));
 	}
 
 }

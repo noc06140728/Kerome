@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference android:title="@string/recipient" android:summary="@string/recipient_summary" android:key="@string/prefs_recipient"></EditTextPreference>
+    <EditTextPreference android:title="@string/recipient" android:summary="@string/recipient_summary" android:key="@string/prefs_recipient" android:inputType="text|textEmailAddress"></EditTextPreference>
+    <ListPreference android:title="@string/usual_quitting_time" android:summary="@string/usual_quitting_time_summary" android:key="@string/prefs_usual_quitting_time" android:entries="@array/usual_quitting_time_entries" android:entryValues="@array/usual_quitting_time_entry_values"></ListPreference>
     <ListPreference android:defaultValue="action_send" android:key="@string/prefs_intent_action" android:title="@string/intent_action" android:entries="@array/intent_action_entries" android:summary="@string/intent_action_summary" android:entryValues="@array/intent_action_entry_values"></ListPreference>
+    
+    
 </PreferenceScreen>

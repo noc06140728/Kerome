@@ -2,16 +2,16 @@ package net.hardwave.kerome;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
 import android.content.res.Resources;
 
 public class MailGenerator {
-	private int minites;
+	private int minutes;
 	private Resources res;
 	private Random rand;
+	private int usual_quitting_time = 19;
 
 	public MailGenerator(Resources res) {
 		this.res = res;
@@ -19,15 +19,19 @@ public class MailGenerator {
 	}
 	
 	public void setTime(int minites) {
-		this.minites = minites;
+		this.minutes = minites;
 	}
+	public void setUsualQuittingTime(int usual_quitting_time) {
+		this.usual_quitting_time = usual_quitting_time;
+	}
+
 	public String generateSubject() {
 		return null;
 	}
 
 	public String generateBody() {
 		StringBuffer str = new StringBuffer();
-		if (isGoHomeSoon()) {
+		if (isGoHomeSoon(minutes)) {
 			str.append(randomChoise(res.getStringArray(R.array.body_go_home)));
 			if (isLater()) {
 				str.append(randomChoise(res.getStringArray(R.array.body_go_home_later)));
@@ -35,7 +39,7 @@ public class MailGenerator {
 		} else {
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job1)));
 			//str.append(embededTime(randomChoise(res.getStringArray(R.array.body_on_job2))));
-			str.append(getTimeMessage(minites));
+			str.append(getTimeMessage(minutes));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job3)));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job4)));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job5)));
@@ -63,25 +67,15 @@ public class MailGenerator {
 		}
 	}
 
-	private Object embededTime(String str) {
-		Calendar now = new GregorianCalendar();
-		now.add(Calendar.MINUTE, minites);
-		now.add(Calendar.MINUTE, -now.get(Calendar.MINUTE) % 10);
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-		String s = format.format(now.getTime());
-		return str.replace("HHMM", s).replace("MM", Integer.toString(minites));
-	}
-
 	private String randomChoise(String[] stringArray) {
 		return stringArray[rand.nextInt(stringArray.length)];
 	}
 
 	private boolean isLater() {
-		// TODO 遅い時間帯判定を実装（現在時刻の値で判定）
-		return false;
+		int hour = new GregorianCalendar().get(Calendar.HOUR_OF_DAY);
+		return (hour >= usual_quitting_time) || (hour <= 8);
 	}
-	private boolean isGoHomeSoon() {
-		// TODO 帰るメールかどうかの判定を実装（timeフィールドの値で判定）
-		return false;
+	private boolean isGoHomeSoon(int minutes) {
+		return (minutes < 10);
 	}
 }

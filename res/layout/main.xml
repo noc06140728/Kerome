@@ -8,8 +8,8 @@
 <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="match_parent">
     <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="center_vertical" android:padding="5dp" android:id="@+id/quitting_time_label" android:text="@string/quitting_time"></TextView>
     <TextView android:layout_height="wrap_content" android:text="99:99" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:id="@+id/quitting_time_text"></TextView>
-    <SeekBar android:layout_gravity="center_vertical" android:layout_margin="5dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/quitting_time_bar" android:max="360"></SeekBar>
 </LinearLayout>
-<Button android:text="@string/send" android:layout_width="match_parent" android:layout_height="wrap_content" android:onClick="sendMail" android:id="@+id/send_button"></Button>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/mail_body_text" android:text="(mail_body)"></TextView>
+<TextView android:id="@+id/mail_body_text" android:text="(mail_body)" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1"></TextView>
+<SeekBar android:layout_height="wrap_content" android:id="@+id/quitting_time_bar" android:max="360" android:layout_width="fill_parent" android:layout_gravity="bottom" android:layout_margin="5dp"></SeekBar>
+<Button android:onClick="sendMail" android:text="@string/send" android:layout_height="wrap_content" android:id="@+id/send_button" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_margin="5dp"></Button>
 </LinearLayout>

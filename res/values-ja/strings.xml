@@ -7,4 +7,6 @@
     <string name="recipient">宛先</string>
     <string name="recipient_summary">宛先のメールアドレス</string>
     <string name="intent_action_summary">Intent Action を切り替えると、送信に利用できるメールアプリケーションを変更できる場合があります。</string>
+    <string name="usual_quitting_time">普段の退社時刻</string>
+    <string name="usual_quitting_time_summary">この時刻よりも退社が遅くなった場合には、気の利いたメッセージが追加されます。</string>
 </resources>
