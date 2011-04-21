@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -24,6 +26,7 @@ public class Kerome extends Activity {
 	/** Called when the activity is first created. */
 	private SeekBar quittingTimeBar;
 	private TextView quittingTimeText;
+	private TextView mailSubjectText;
 	private TextView mailBodyText;
 	
 	private MailGenerator gen;
@@ -37,6 +40,7 @@ public class Kerome extends Activity {
 		recipientText = (TextView) this.findViewById(R.id.recipient_text);
 		quittingTimeBar = (SeekBar) this.findViewById(R.id.quitting_time_bar);
 		quittingTimeText = (TextView) this.findViewById(R.id.quitting_time_text);
+		mailSubjectText = (TextView) this.findViewById(R.id.mail_subject_text);
 		mailBodyText = (TextView) this.findViewById(R.id.mail_body_text);
 		
 		gen = new MailGenerator(getResources());
@@ -47,6 +51,7 @@ public class Kerome extends Activity {
 				setQuittingTime(progress);
 				
 				gen.setTime(progress);
+				mailSubjectText.setText(gen.generateSubject());
 				mailBodyText.setText(gen.generateBody());
 			}
 
@@ -90,7 +95,7 @@ public class Kerome extends Activity {
 			intent.setData(Uri.parse("mailto:" + toAddr));
 		}
 		
-		intent.putExtra(Intent.EXTRA_SUBJECT, "GOING HOME");
+		intent.putExtra(Intent.EXTRA_SUBJECT, mailSubjectText.getText());
 		intent.putExtra(Intent.EXTRA_TEXT, mailBodyText.getText());
 		startActivity(Intent.createChooser(intent, "Send mail..."));
 	}
@@ -109,8 +114,8 @@ public class Kerome extends Activity {
 			preference();
 			break;
 
-		case R.id.help:
-			help();
+		case R.id.about:
+			about();
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -121,22 +126,13 @@ public class Kerome extends Activity {
 		startActivity(intent);
 	}
 
-	private void help() {
-//		 Builder dialog = new AlertDialog.Builder(null);
-//		 dialog.setTitle("Help Dialog");
-//		 dialog.create();
-//		 .setIcon(R.drawable.alert_dialog_icon)
-//		 .setTitle("Help Dialog")
-//		 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//		 public void onClick(DialogInterface dialog, int whichButton) {
-//		 //code for OK
-//		 }
-//		 })
-//		 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//		 public void onClick(DialogInterface dialog, int whichButton) {
-//		 //code for Cancel
-//		 }
-//		 })
-//		 .create();
+	private void about() {
+		Builder dialog = new AlertDialog.Builder(this);
+		dialog.setTitle(R.string.app_name)
+		.setIcon(R.drawable.icon)
+		.setMessage(R.string.about_message)
+		.setPositiveButton("OK", null);
+		dialog.create();
+		dialog.show();
 	}
 }

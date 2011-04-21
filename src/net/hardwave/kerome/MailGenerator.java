@@ -11,7 +11,7 @@ public class MailGenerator {
 	private int minutes;
 	private Resources res;
 	private Random rand;
-	private int usual_quitting_time = 19;
+	private int usual_quitting_time;
 
 	public MailGenerator(Resources res) {
 		this.res = res;
@@ -26,7 +26,16 @@ public class MailGenerator {
 	}
 
 	public String generateSubject() {
-		return null;
+		StringBuffer str = new StringBuffer();
+		if (isGoHomeSoon(minutes)) {
+			str.append(randomChoise(res.getStringArray(R.array.subject_go_home)));
+			if (isLater()) {
+				str.append(randomChoise(res.getStringArray(R.array.subject_go_home_later)));
+			}
+		} else {
+			str.append(randomChoise(res.getStringArray(R.array.subject_on_job)));
+		}
+		return str.toString();
 	}
 
 	public String generateBody() {
@@ -38,12 +47,11 @@ public class MailGenerator {
 			}
 		} else {
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job1)));
-			//str.append(embededTime(randomChoise(res.getStringArray(R.array.body_on_job2))));
 			str.append(getTimeMessage(minutes));
+			str.append(randomChoise(res.getStringArray(R.array.body_on_job2)));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job3)));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job4)));
 			str.append(randomChoise(res.getStringArray(R.array.body_on_job5)));
-			str.append(randomChoise(res.getStringArray(R.array.body_on_job6)));
 		}
 		return str.toString();
 	}

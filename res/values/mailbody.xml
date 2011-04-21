@@ -22,30 +22,47 @@
         <item>まだ仕事が片付きません。</item>
         <item>トラブル対応してます。</item>
         <item>まだかかりそう。</item>
-    </string-array>
-    <string-array name="body_on_job2">
-        <item>HH時頃までには、</item>
-        <item>HH時半までには、</item>
-        <item>HHMMまでには、</item>
-        <item>あとMM分くらいで、</item>
     </string-array>    
-    <string-array name="body_on_job3">	
+    <string-array name="body_on_job2">	
         <item>出れそう</item>
         <item>片付きそう</item>
         <item>終わりそう</item>
     </string-array>    
-    <string-array name="body_on_job4">	
+    <string-array name="body_on_job3">	
         <item>。</item>
         <item>かな。</item>
         <item>です。</item>
     </string-array>    
-    <string-array name="body_on_job5">	
+    <string-array name="body_on_job4">	
         <item>早く片付けれるように</item>
         <item>早く帰れるように</item>
     </string-array>    
-    <string-array name="body_on_job6">	
+    <string-array name="body_on_job5">	
         <item>、頑張ります。</item>
         <item>、がんばります。</item>
         <item>します。</item>
-    </string-array>    
+    </string-array>
+    <string-array name="subject_go_home">
+        <item>これから</item>
+        <item>帰ります</item>
+        <item>帰ります！</item>
+        <item>帰りますよ</item>
+    </string-array>
+    <string-array name="subject_go_home_later">
+        <item>これから</item>
+        <item>帰ります</item>
+        <item>帰ります！</item>
+        <item>帰りますよ</item>
+        <item>やっと</item>
+        <item>遅くなった</item>
+        <item>急いで</item>
+    </string-array>
+    <string-array name="subject_on_job">
+        <item>まだちょっと</item>
+        <item>まだ</item>
+        <item>！！！</item>
+        <item>トラブル発生</item>
+        <item>片付かない！</item>
+        <item>問題発生…。</item>
+    </string-array>
 </resources>
